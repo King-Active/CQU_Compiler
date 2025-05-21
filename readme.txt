@@ -14,6 +14,7 @@
 
 
 编译：
+mkdir build/
 首先进入 /build 若CMakeList修改后应执行 cmake 命令
 1. cd /build
 2. cmake ..
@@ -23,7 +24,7 @@
 
 执行：
 1. cd /bin
-2. compiler <src_filename> [-step] -o <output_filename> [-O1]
+2. ./compiler <src_filename> [-step] -o <output_filename> [-O1]
     -step: 支持以下几种输入
         s0: 词法结果 token 串
         s1: 语法分析结果语法树, 以 json 格式输出
@@ -38,6 +39,10 @@
         执行方法: python run.py [s0/s1/s2/S]
     score.py: 将 run.py 生成的编译结果与标准结果进行对比并打分
         执行方法: python score.py [s0/s1/s2/S]
-
     test.py 编译生成 compiler 可执行文件，执行并生成结果，最后对结果进行判断并打分
         执行方法: python test.py [s0/s1/s2/S]
+
+cp /home/zzw/compiler/test/testcase/basic/ ../01_var_defn2.sy
+./compiler ../01_var_defn2.sy -s2 -o out.xxx -O1
+
+libTools-x86-linux.a

@@ -17,8 +17,8 @@ namespace ir
         GlobalVal(ir::Operand va, int len);
     };
     struct Program {
-        std::vector<Function> functions;
-        std::vector<GlobalVal> globalVal;
+        std::vector<Function> functions;        // 入口：main()函数
+        std::vector<GlobalVal> globalVal;       // 全局变量
         Program();
         void addFunction(const Function& proc);
         std::string draw();

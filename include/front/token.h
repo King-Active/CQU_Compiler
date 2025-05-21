@@ -61,8 +61,8 @@ enum class TokenType{
 std::string toString(TokenType);
 
 struct Token {
-    TokenType type;
-    std::string value;
+    TokenType type;         // Token 类型
+    std::string value;      // 字符串
 };
 
 

@@ -11,7 +11,7 @@ struct Function {
     std::string name;
     ir::Type returnType;
     std::vector<Operand> ParameterList;
-    std::vector<Instruction*> InstVec;
+    std::vector<Instruction*> InstVec;      // 存储解析后的IR序列：vector<ir::Instruction *> &buffer 
     Function();
     Function(const std::string&, const ir::Type&);
     Function(const std::string&, const std::vector<Operand>&, const ir::Type&);

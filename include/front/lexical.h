@@ -29,7 +29,7 @@
 
 namespace frontend {
 
-// so we need a enumerate class for status
+// 五种可能的状态
 enum class State {
     Empty,              // space, \n, \r ...
     Ident,              // a keyword or identifier, like 'int' 'a0' 'else' ...
@@ -59,10 +59,10 @@ struct DFA {
     DFA& operator=(const DFA&) = delete;    // assignment
 
     /**
-     * @brief take a char as input, change state to next state, and output a Token if necessary
-     * @param[in] input: the input character
-     * @param[out] buf: the output Token buffer
-     * @return  return true if a Token is produced, the buf is valid then
+     * @brief 其根据自身当前状态和输入来决定转移后的状态
+     * @param[in] input: 当前读入的字符
+     * @param[out] buf: 识别token结果，可能无效
+     * @return  bool: 一个完整的token是否被识别
      */
     bool next(char input, Token& buf);
 
@@ -71,9 +71,14 @@ struct DFA {
      */
     void reset();
 
+    /*
+        getTokenType(cur_str)
+    */
+    TokenType getTokenType();
+
 private:
-    State cur_state;    // record current state of the DFA
-    std::string cur_str;    // record input characters
+    State cur_state;        // 当前DFA状态
+    std::string cur_str;    // 已经接收的字符串
 };
 
 // definition of Scanner
@@ -94,8 +99,8 @@ struct Scanner {
     Scanner& operator=(const Scanner&) = delete;
 
     /**
-     * @brief run the scanner, analysis the input file and result a token stream
-     * @return std::vector<Token>: the result token stream
+     * @brief 读入文件，返回token序列
+     * @return std::vector<Token>: token 序列
      */
     std::vector<Token> run();
 
