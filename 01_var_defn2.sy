@@ -1,5 +1,0 @@
-const int a[1]={0};
-
-int main(){
-    return a[0];
-}
